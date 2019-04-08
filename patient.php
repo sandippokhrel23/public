@@ -22,7 +22,7 @@ if(isset($_POST[submit]))
 	{
 		echo "<script>alert('patients record inserted successfully...');</script>";
 		$insid= mysqli_insert_id($con);
-		if(isset($_SESSION[adminid]))
+		if(isset($_SESSION['adminid']))
 		{
 		echo "<script>window.location='appointment.php?patid=$insid';</script>";	
 		}

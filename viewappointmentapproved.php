@@ -48,13 +48,15 @@ if(isset($_GET[approveid]))
         <tbody>
           <?php
 		$sql ="SELECT * FROM appointment WHERE (status='Approved' OR status='Active')";
-		if(isset($_SESSION[patientid]))
+		if(isset($_SESSION['patientid']))
 		{
-			$sql  = $sql . " AND patientid='$_SESSION[patientid]'";
+			$patient_id=$_SESSION['patientid'];
+			$sql  = $sql . " AND patientid='$patient_id'";
 		}
-		if(isset($_SESSION[doctorid]))
+		if(isset($_SESSION['doctorid']))
 		{
-			$sql  = $sql . " AND doctorid='$_SESSION[doctorid]'";			
+			$doctor_id=$_SESSION['doctorid'];
+			$sql  = $sql . " AND doctorid='$doctor_id'";			
 		}
 		$qsql = mysqli_query($con,$sql);
 		while($rs = mysqli_fetch_array($qsql))
@@ -82,7 +84,7 @@ if(isset($_GET[approveid]))
           <td><div align='center'>";
 		  if($rs[status] != "Approved")
 		  {
-				  if(!(isset($_SESSION[patientid])))
+				  if(!(isset($_SESSION['patientid'])))
 				  {
 						  echo "<a href='appointmentapproval.php?editid=$rs[appointmentid]'>Approve</a><hr>";
 				  }

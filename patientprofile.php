@@ -4,7 +4,8 @@ include("header.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
 {
-		$sql ="UPDATE patient SET patientname='$_POST[patientname]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]' WHERE patientid='$_SESSION[patientid]'";
+	 $patient_id=$_SESSION['patientid'];
+		$sql ="UPDATE patient SET patientname='$_POST[patientname]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]' WHERE patientid='$patient_id'";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			echo "<script>alert('patient record updated successfully...');</script>";
@@ -14,9 +15,10 @@ if(isset($_POST[submit]))
 			echo mysqli_error($con);
 		}
 }
-if(isset($_SESSION[patientid]))
+if(isset($_SESSION['patientid']))
 {
-	$sql="SELECT * FROM patient WHERE patientid='$_SESSION[patientid]' ";
+	$patient_id=$_SESSION['patientid'];
+	$sql="SELECT * FROM patient WHERE patientid='$patient_id' ";
 	$qsql = mysqli_query($con,$sql);
 	$rsedit = mysqli_fetch_array($qsql);
 	
@@ -52,7 +54,7 @@ if(isset($_SESSION[patientid]))
         </tr>
         <tr>
           <td>Mobile Number</td>
-          <td><input type="text" name="mobilenumber" id="mobilenumber" value="<?php echo $rsedit[mobileno]; ?>" /></td>
+          <td><input type="number" name="mobilenumber" id="mobilenumber" value="<?php echo $rsedit[mobileno]; ?>" /></td>
         </tr>
         <tr>
           <td>City</td>
@@ -136,6 +138,7 @@ var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/; //Variable t
 
 function validateform()
 {
+	debugger;
 	if(document.frmpatprfl.patientname.value == "")
 	{
 		alert("Patient name should not be empty..");
@@ -178,6 +181,14 @@ function validateform()
 		document.frmpatprfl.mobilenumber.focus();
 		return false;
 	}
+	else if(document.frmpatprfl.mobilenumber.value.toString().length!=10)
+	{
+		alert("Mobile number must be of ten digit.");
+		document.frmpatprfl.mobilenumber.focus();
+		return false;
+	}
+	
+
 	else if(document.frmpatprfl.city.value == "")
 	{
 		alert("City should not be empty..");
@@ -202,36 +213,36 @@ function validateform()
 		document.frmpatprfl.pincode.focus();
 		return false;
 	}
-	else if(document.frmpatprfl.loginid.value == "")
-	{
-		alert("Login ID should not be empty..");
-		document.frmpatprfl.loginid.focus();
-		return false;
-	}
-	else if(!document.frmpatprfl.loginid.value.match(emailExp))
-	{
-		alert("Login ID not valid..");
-		document.frmpatprfl.loginid.focus();
-		return false;
-	}
-	else if(document.frmpatprfl.password.value == "")
-	{
-		alert("Password should not be empty..");
-		document.frmpatprfl.password.focus();
-		return false;
-	}
-	else if(document.frmpatprfl.password.value.length < 8)
-	{
-		alert("Password length should be more than 8 characters...");
-		document.frmpatprfl.password.focus();
-		return false;
-	}
-	else if(document.frmpatprfl.password.value != document.frmpatprfl.confirmpassword.value )
-	{
-		alert("Password and confirm password should be equal..");
-		document.frmpatprfl.confirmpassword.focus();
-		return false;
-	}
+	// else if(document.frmpatprfl.loginid.value == "")
+	// {
+	// 	alert("Login ID should not be empty..");
+	// 	document.frmpatprfl.loginid.focus();
+	// 	return false;
+	// }
+	// else if(!document.frmpatprfl.loginid.value.match(emailExp))
+	// {
+	// 	alert("Login ID not valid..");
+	// 	document.frmpatprfl.loginid.focus();
+	// 	return false;
+	// }
+	// else if(document.frmpatprfl.password.value == "")
+	// {
+	// 	alert("Password should not be empty..");
+	// 	document.frmpatprfl.password.focus();
+	// 	return false;
+	// }
+	// else if(document.frmpatprfl.password.value.length < 8)
+	// {
+	// 	alert("Password length should be more than 8 characters...");
+	// 	document.frmpatprfl.password.focus();
+	// 	return false;
+	// }
+	// else if(document.frmpatprfl.password.value != document.frmpatprfl.confirmpassword.value )
+	// {
+	// 	alert("Password and confirm password should be equal..");
+	// 	document.frmpatprfl.confirmpassword.focus();
+	// 	return false;
+	// }
 	else if(document.frmpatprfl.select2.value == "")
 	{
 		alert("Blood Group should not be empty..");

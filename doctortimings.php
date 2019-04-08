@@ -50,9 +50,10 @@ if(isset($_GET[editid]))
     <table width="445" border="3">
       <tbody>
         <?php
-		if(isset($_SESSION[doctorid]))
+		if(isset($_SESSION['doctorid']))
 		{
-			echo "<input type='hidden' name='select2' value='$_SESSION[doctorid]' >";
+			$doctor_id=$_SESSION['doctorid'];
+			echo "<input type='hidden' name='select2' value='$doctor_id' >";
 		}
 		else
 		{

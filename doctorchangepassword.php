@@ -4,7 +4,7 @@ include("header.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
 {
-	$sql = "UPDATE doctor SET password='$_POST[newpassword]' WHERE password='$_POST[oldpassword]' AND doctorid='$_SESSION[doctorid]'";
+	$sql = "UPDATE doctor SET password='$_POST[newpassword]' WHERE password='$_POST[oldpassword]' AND doctorid='$_SESSION['doctorid']'";
 	$qsql= mysqli_query($con,$sql);
 	if(mysqli_affected_rows($con) == 1)
 	{

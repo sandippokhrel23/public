@@ -17,7 +17,7 @@ if(isset($_POST[submit]))
 	}
 	else
 	{
-	$sql ="INSERT INTO orders( patientid, doctorid, orderdate, address, mobileno, note, status)  values('$_SESSION[patientid]','$_POST[docid]','$dt','$_POST[address]','$_POST[mobilenumber]','$_POST[note]','Pending')";
+	$sql ="INSERT INTO orders( patientid, doctorid, orderdate, address, mobileno, note, status)  values('$_SESSION['patientid']','$_POST[docid]','$dt','$_POST[address]','$_POST[mobilenumber]','$_POST[note]','Pending')";
 	if($qsql = mysqli_query($con,$sql))
 	{
 		echo "<script>alert('Order placed successfully...');</script>";
@@ -36,7 +36,7 @@ if(isset($_GET[editid]))
 	$rsedit = mysqli_fetch_array($qsql);
 	
 }
-	$sql="SELECT * FROM patient WHERE patientid='$_SESSION[patientid]' ";
+	$sql="SELECT * FROM patient WHERE patientid='$_SESSION['patientid']' ";
 	$qsql = mysqli_query($con,$sql);
 	$rsedit = mysqli_fetch_array($qsql);
 ?>

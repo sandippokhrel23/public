@@ -170,7 +170,7 @@ border-radius: 0 0 3px 3px;
 }
 </style>
 <?php
-if(isset($_SESSION[adminid]))
+if(isset($_SESSION['adminid']))
 {
 ?>
 <div id="mmenu">
@@ -228,7 +228,7 @@ if(isset($_SESSION[adminid]))
 }
 ?>
 <?php
-if(isset($_SESSION[doctorid]))
+if(isset($_SESSION['doctorid']))
 {
 ?>
 <div id="mmenu">
@@ -278,7 +278,7 @@ if(isset($_SESSION[doctorid]))
 }
 ?>
 <?php
-if(isset($_SESSION[patientid]))
+if(isset($_SESSION['patientid']))
 {
 ?>
 <div id="mmenu">

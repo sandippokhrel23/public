@@ -4,9 +4,9 @@ include("header.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
 {
-	if(isset($_SESSION[patientid]))
+	if(isset($_SESSION['patientid']))
 	{
-		$lastinsid =$_SESSION[patientid];
+		$lastinsid =$_SESSION['patientid'];
 	}
 	else
 	{
@@ -50,9 +50,10 @@ if(isset($_GET[editid]))
 	$rsedit = mysqli_fetch_array($qsql);
 	
 }
-if(isset($_SESSION[patientid]))
+if(isset($_SESSION['patientid']))
 {
-$sqlpatient = "SELECT * FROM patient WHERE patientid='$_SESSION[patientid]' ";
+$patient_id=$_SESSION['patientid'];
+$sqlpatient = "SELECT * FROM patient WHERE patientid='$patient_id' ";
 $qsqlpatient = mysqli_query($con,$sqlpatient);
 $rspatient = mysqli_fetch_array($qsqlpatient);
 $readonly = " readonly";
@@ -77,7 +78,7 @@ if(isset($_POST[submit]))
 	}
 	else
 	{
-		if(isset($_SESSION[patientid]))
+		if(isset($_SESSION['patientid']))
 		{
 			echo "<h2>Appointment taken successfully.. </h2>";
 			echo "<p>Appointment record is in pending process. Kinldy check the appointment status. </p>";
@@ -115,7 +116,7 @@ else
        
         </tr>
 <?php
-		  if(!isset($_SESSION[patientid]))
+		  if(!isset($_SESSION['patientid']))
 		  {        
 ?>
         <tr>
@@ -134,9 +135,12 @@ else
           <td>Gender</td>
           <td>
           <?php 
-		  if(isset($_SESSION[patientid]))
+		  if(isset($_SESSION['patientid']))
 		  {
-			  echo $rspatient[gender];
+				echo $rspatient[gender];
+				echo '<select name="select6" id="select6" hidden>
+				<option value="'.$rspatient[gender].'"></option>
+				</select>';
 		  }
 		  else
 		  {
@@ -269,30 +273,30 @@ function validateform()
 		document.frmpatapp.mobileno.focus();
 		return false;
 	}
-	else if(document.frmpatapp.loginid.value == "")
-	{
-		alert("login ID should not be empty..");
-		document.frmpatapp.loginid.focus();
-		return false;
-	}
-	else if(!document.frmpatapp.loginid.value.match(alphanumericExp))
-	{
-		alert("login ID not valid..");
-		document.frmpatapp.loginid.focus();
-		return false;
-	}
-	else if(document.frmpatapp.password.value == "")
-	{
-		alert("Password should not be empty..");
-		document.frmpatapp.password.focus();
-		return false;
-	}
-	else if(document.frmpatapp.password.value.length < 8)
-	{
-		alert("Password length should be more than 8 characters...");
-		document.frmpatapp.password.focus();
-		return false;
-	}
+	// else if(document.frmpatapp.loginid.value == "")
+	// {
+	// 	alert("login ID should not be empty..");
+	// 	document.frmpatapp.loginid.focus();
+	// 	return false;
+	// }
+	// else if(!document.frmpatapp.loginid.value.match(alphanumericExp))
+	// {
+	// 	alert("login ID not valid..");
+	// 	document.frmpatapp.loginid.focus();
+	// 	return false;
+	// }
+	// else if(document.frmpatapp.password.value == "")
+	// {
+	// 	alert("Password should not be empty..");
+	// 	document.frmpatapp.password.focus();
+	// 	return false;
+	// }
+	// else if(document.frmpatapp.password.value.length < 8)
+	// {
+	// 	alert("Password length should be more than 8 characters...");
+	// 	document.frmpatapp.password.focus();
+	// 	return false;
+	// }
 	else if(document.frmpatapp.select6.value == "")
 	{
 		alert("Gender should not be empty..");
@@ -315,6 +319,18 @@ function validateform()
 	{
 		alert("Appointment time should not be empty..");
 		document.frmpatapp.appointmenttime.focus();
+		return false;
+	}
+	else if(document.frmpatapp.department.value == "")
+	{
+		alert("Please select department.");
+		document.frmpatapp.department.focus();
+		return false;
+	}
+	else if(document.frmpatapp.doct.value == "")
+	{
+		alert("Please select doctor.");
+		document.frmpatapp.doct.focus();
 		return false;
 	}
 	else

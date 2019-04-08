@@ -36,13 +36,15 @@ if(isset($_GET[delid]))
           </tr>
           <?php
 		$sql ="SELECT * FROM treatment_records where status='Active'";
-		if(isset($_SESSION[patientid]))
+		if(isset($_SESSION['patientid']))
 		{
-			$sql = $sql . " AND patientid='$_SESSION[patientid]'"; 
+			$patient_id=$_SESSION['patientid'];
+			$sql = $sql . " AND patientid='$patient_id'"; 
 		}
-		if(isset($_SESSION[doctorid]))
+		if(isset($_SESSION['doctorid']))
 		{
-			$sql = $sql . " AND doctorid='$_SESSION[doctorid]'";
+			$doctor_id=$_SESSION['doctorid'];
+			$sql = $sql . " AND doctorid='$doctor_id'";
 		}
 		$qsql = mysqli_query($con,$sql);
 		while($rs = mysqli_fetch_array($qsql))

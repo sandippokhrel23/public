@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("header.php");
 include("dbconnection.php");
 if(isset($_GET[delid]))
@@ -47,9 +48,10 @@ if(isset($_GET[approveid]))
         <tbody>
           <?php
 		$sql ="SELECT * FROM appointment WHERE (status !='')";
-		if(isset($_SESSION[patientid]))
+		if(isset($_SESSION['patientid']))
 		{
-			$sql  = $sql . " AND patientid='$_SESSION[patientid]'";
+			$patient_id=$_SESSION['patientid'];
+			$sql  = $sql . " AND patientid='$patient_id'";
 		}
 		$qsql = mysqli_query($con,$sql);
 		while($rs = mysqli_fetch_array($qsql))
@@ -76,7 +78,7 @@ if(isset($_GET[approveid]))
           <td><div align='center'>";
 		  if($rs[status] != "Approved")
 		  {
-				  if(!(isset($_SESSION[patientid])))
+				  if(!(isset($_SESSION['patientid'])))
 				  {
 						  echo "<a href='appointmentapproval.php?editid=$rs[appointmentid]'>Approve</a><hr>";
 				  }
@@ -87,6 +89,7 @@ if(isset($_GET[approveid]))
 				echo "<a href='patientreport.php?patientid=$rs[patientid]&appointmentid=$rs[appointmentid]'>View Report</a>";
 		  }
 		 echo "</center></td></tr>";
+
 		}
 		?>
       </tbody>

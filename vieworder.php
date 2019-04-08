@@ -46,7 +46,7 @@ if(isset($_GET[deliverid]))
           <th>Mobile Number</th>
           <th>Status</th>
 <?php
-		if(isset($_SESSION[doctorid]))
+		if(isset($_SESSION['doctorid']))
 		{
 ?>			          
           <th>Deliver</th>
@@ -55,7 +55,7 @@ if(isset($_GET[deliverid]))
 		}
 ?>
 <?php
-		if(isset($_SESSION[adminid]))
+		if(isset($_SESSION['adminid']))
 		{
 ?>			         
           <th>Action</th>
@@ -67,13 +67,15 @@ if(isset($_GET[deliverid]))
          <tbody> 
 		 <?php
 		$sql ="SELECT * FROM orders where orderid!='0' ";
-		if(isset($_SESSION[patientid]))
+		if(isset($_SESSION['patientid']))
 		{
-			$sql = $sql . " AND patientid='$_SESSION[patientid]'";
+			$patient_id=$_SESSION['patientid'];
+			$sql = $sql . " AND patientid='$patient_id'";
 		}
-		if(isset($_SESSION[doctorid]))
+		if(isset($_SESSION['doctorid']))
 		{
-			$sql = $sql . " AND doctorid='$_SESSION[doctorid]'";
+			$doctor_id=$_SESSION['doctorid'];
+			$sql = $sql . " AND doctorid='$doctor_id'";
 		}
 		//echo $sql;
 		$qsql = mysqli_query($con,$sql);
@@ -94,7 +96,7 @@ if(isset($_GET[deliverid]))
 		   <td>&nbsp;$rs[address]</td>
 		    <td>&nbsp;$rs[mobileno]</td>
 			 <td>&nbsp;";
-			 if(isset($_SESSION[patientid]))
+			 if(isset($_SESSION['patientid']))
 			{
 				if($rs[status] == "Active")
 				{
@@ -110,7 +112,7 @@ if(isset($_GET[deliverid]))
 				echo $rs[status];
 			}
 			 echo "</td>";
-		if(isset($_SESSION[doctorid]))
+		if(isset($_SESSION['doctorid']))
 		{
 				if($rs[status] == "Active")
 				{
@@ -123,14 +125,14 @@ if(isset($_GET[deliverid]))
 				}
 		   
 		   echo "<td> <a href='patientreport.php?patientid=$rs[patientid]' target='_blank' >View Patient Report</a>  ";
-			   if(isset($_SESSION[adminid]))
+			   if(isset($_SESSION['adminid']))
 				{
 			   echo " | <a href='vieworder.php?delid=$rs[orderid]'>Delete</a>";
 				}
 		   echo "</td>";
 			}
 			
-		 if(isset($_SESSION[adminid]))
+		 if(isset($_SESSION['adminid']))
 				{		  
 			   echo " <td> ";
 				   if($rs[deliverydate] == "0000-00-00")

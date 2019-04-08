@@ -109,21 +109,22 @@ $rspatient=mysqli_fetch_array($qsqlpatient);
         
         
         <?php
-		if(isset($_SESSION[doctorid]))
+		if(isset($_SESSION['doctorid']))
 		{
 		?>
         <tr>
           <td>Doctor</td>
           <td>
     		<?php
-				$sqldoctor= "SELECT * FROM doctor INNER JOIN department ON department.departmentid=doctor.departmentid WHERE doctor.status='Active' AND doctor.doctorid='$_SESSION[doctorid]'";
+				$doctor_id=$_SESSION['doctorid'];
+				$sqldoctor= "SELECT * FROM doctor INNER JOIN department ON department.departmentid=doctor.departmentid WHERE doctor.status='Active' AND doctor.doctorid='$doctor_id'";
 				$qsqldoctor = mysqli_query($con,$sqldoctor);
 				while($rsdoctor = mysqli_fetch_array($qsqldoctor))
 				{
 					echo "$rsdoctor[doctorname] ( $rsdoctor[departmentname] )";
 				}
 				?>
-                <input type="hidden" name="select5" value="<?php echo $_SESSION[doctorid]; ?>"  />
+                <input type="hidden" name="select5" value="<?php echo $_SESSION['doctorid']; ?>"  />
           </td>
         <?php
 		}

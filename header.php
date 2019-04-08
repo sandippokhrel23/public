@@ -174,7 +174,7 @@ input[type=number]{
         <li><a  href="index.php" <?php if(basename($_SERVER['PHP_SELF']) == "index.php"){ echo ' class="active"'; } ?> >Home</a></li>
         <li><a href="aboutus.php" <?php if(basename($_SERVER['PHP_SELF']) == "aboutus.php"){ echo ' class="active"'; } ?>>About US</a></li>
 <?php
-if(!isset($_SESSION[patientid]))
+if(!isset($_SESSION['patientid']))
 {
 ?>        
         <li><a href="patientappointment.php" <?php if(basename($_SERVER['PHP_SELF']) == "patientappointment.php"){ echo ' class="active"'; } ?>>Online Appointment</a></li>

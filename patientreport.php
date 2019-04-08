@@ -194,7 +194,7 @@ jQuery(document).ready(function($) {
 
 
 <?php
-if(isset($_SESSION[adminid]))
+if(isset($_SESSION['adminid']))
 {
 ?>
     <!-- Toggle #6 -->
@@ -207,7 +207,7 @@ if(isset($_SESSION[adminid]))
             $billappointmentid= $rsappointment[0]; 
             include("viewpaymentreport.php"); ?>
                       <?php
-                if(!isset($_SESSION[patientid]))
+                if(!isset($_SESSION['patientid']))
                 {
 					
 	$sqlbilling_records ="SELECT * FROM billing WHERE appointmentid='$billappointmentid'";

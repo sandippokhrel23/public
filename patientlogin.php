@@ -3,7 +3,7 @@
 session_start();
 include("header.php");
 include("dbconnection.php");
-if(isset($_SESSION[patientid]))
+if(isset($_SESSION['patientid']))
 {
 	echo "<script>window.location='patientaccount.php';</script>";
 }
@@ -14,7 +14,7 @@ if(isset($_POST[submit]))
 	if(mysqli_num_rows($qsql) >= 1)
 	{
 		$rslogin = mysqli_fetch_array($qsql);
-		$_SESSION[patientid]= $rslogin[patientid] ;
+		$_SESSION['patientid']= $rslogin[patientid] ;
 		echo "<script>window.location='patientaccount.php';</script>";
 	}
 	else

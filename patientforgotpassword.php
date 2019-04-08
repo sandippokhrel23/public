@@ -2,7 +2,7 @@
 session_start();
 include("header.php");
 include("dbconnection.php");
-if(isset($_SESSION[patientid]))
+if(isset($_SESSION['patientid']))
 {
 	echo "<script>window.location='patientaccount.php';</script>";
 }

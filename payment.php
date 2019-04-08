@@ -22,7 +22,7 @@ if(isset($_POST[submit]))
 			
 		}
 }
-if(isset($_SESSION[patientid]))
+if(isset($_SESSION['patientid']))
 {
 	$sql="SELECT * FROM payment WHERE paymentid='$_GET[editid]' ";
 	$qsql = mysqli_query($con,$sql);

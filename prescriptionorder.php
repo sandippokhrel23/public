@@ -98,7 +98,7 @@ if(isset($_GET[orderid]))
         </tr>
         
         <?php
-		if(isset($_SESSION[adminid]))
+		if(isset($_SESSION['adminid']))
 		{
 		?>
         <tr>

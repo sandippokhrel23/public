@@ -60,7 +60,7 @@ CREATE TABLE `appointment` (
   `appointmentid` int(10) NOT NULL,
   `appointmenttype` varchar(25) NOT NULL,
   `patientid` int(10) NOT NULL,
-  `roomid` int(10) NOT NULL,
+  `roomid` int(10) NULL,
   `departmentid` int(10) NOT NULL,
   `appointmentdate` date NOT NULL,
   `appointmenttime` time NOT NULL,

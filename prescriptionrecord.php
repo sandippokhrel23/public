@@ -97,7 +97,7 @@ if(isset($_GET[editid]))
 	<hr>
   <h1>Add Prescription record</h1>
            <?php
-			if(!isset($_SESSION[patientid]))
+			if(!isset($_SESSION['patientid']))
 			{
 		  ?>  
 <form method="post" action="" name="frmpresrecord" onSubmit="return validateform()"> 
@@ -173,7 +173,7 @@ if(isset($_GET[editid]))
           <td><strong>Unit</strong></td>
           <td><strong>Total Cost</strong></td>
                     <?php
-			if(!isset($_SESSION[patientid]))
+			if(!isset($_SESSION['patientid']))
 			{
 		  ?>  
           <td><strong>Action</strong></td>
@@ -193,7 +193,7 @@ if(isset($_GET[editid]))
           <td>&nbsp;₹$rs[cost]</td>
 		   <td>&nbsp;$rs[unit]</td>
 		   <td  align='right'>₹" . $rs[cost] * $rs[unit] . "</td>";
-			if(!isset($_SESSION[patientid]))
+			if(!isset($_SESSION['patientid']))
 			{
 			 echo " <td>&nbsp; <a href='prescriptionrecord.php?delid=$rs[prescription_record_id]&prescriptionid=$_GET[prescriptionid]'>Delete</a> </td>"; 
 			}

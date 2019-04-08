@@ -90,7 +90,7 @@ if(isset($_GET[editid]))
 					echo "$rsdoctor[doctorname] ( $rsdoctor[departmentname] )";
 				}
 				?>
-                <input type="hidden" name="select2" value="<?php echo $_SESSION[doctorid]; ?>"  />
+                <input type="hidden" name="select2" value="<?php echo $_SESSION['doctorid']; ?>"  />
           </td>
         <?php
 		}

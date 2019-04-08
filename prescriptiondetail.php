@@ -30,7 +30,7 @@ while($rs = mysqli_fetch_array($qsql))
   </tbody>
 </table>
 <?php
-if(isset($_SESSION[doctorid]))
+if(isset($_SESSION['doctorid']))
 {
 ?>  
 <hr>

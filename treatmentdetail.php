@@ -46,7 +46,7 @@ if(file_exists("treatmentfiles/$rs[uploads]"))
 		?>
 </table>
 <?php
-if(isset($_SESSION[doctorid]))
+if(isset($_SESSION['doctorid']))
 {
 ?>  
 <hr>

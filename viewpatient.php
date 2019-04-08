@@ -53,7 +53,7 @@ Mob No. - $rs[mobileno]</td>
 <strong>Gender</strong> - &nbsp;$rs[gender]<br>
 <strong>DOB</strong> - &nbsp;$rs[dob]</td>
           <td align='center'>Status - $rs[status] <br>";
-if(isset($_SESSION[adminid]))
+if(isset($_SESSION['adminid']))
 {
 		  echo "<a href='patient.php?editid=$rs[patientid]'>Edit</a> | <a href='viewpatient.php?delid=$rs[patientid]'>Delete</a> <hr>
 <a href='patientreport.php?patientid=$rs[patientid]'>View Report</a>";

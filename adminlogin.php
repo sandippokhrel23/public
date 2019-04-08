@@ -2,7 +2,7 @@
 session_start();
 include("header.php");
 include("dbconnection.php");
-if(isset($_SESSION[adminid]))
+if(isset($_SESSION['adminid']))
 {
 	echo "<script>window.location='adminaccount.php';</script>";
 }
@@ -13,7 +13,7 @@ if(isset($_POST[submit]))
 	if(mysqli_num_rows($qsql) == 1)
 	{
 		$rslogin = mysqli_fetch_array($qsql);
-		$_SESSION[adminid]= $rslogin[adminid] ;
+		$_SESSION['adminid']= $rslogin[adminid] ;
 		echo "<script>window.location='adminaccount.php';</script>";
 	}
 	else

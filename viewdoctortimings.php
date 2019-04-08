@@ -31,7 +31,7 @@ if(isset($_GET[delid]))
           <td>Action</td>
         </tr>
           <?php
-		$sql ="SELECT * FROM doctor_timings where doctorid='$_SESSION[doctorid]'";
+		$sql ="SELECT * FROM doctor_timings where doctorid='$_SESSION['doctorid']'";
 		$qsql = mysqli_query($con,$sql);
 		while($rs = mysqli_fetch_array($qsql))
 		{

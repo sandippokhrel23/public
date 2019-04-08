@@ -23,7 +23,8 @@ if(isset($_GET[delid]))
   <div id="container">
     <h1>View prescription record</h1>
 <?php
-$sql ="SELECT * FROM prescription where patientid='$_SESSION[patientid]'";
+$patient_id=$_SESSION['patientid'];
+$sql ="SELECT * FROM prescription where patientid='$patient_id'";
 $qsql = mysqli_query($con,$sql);
 while($rs = mysqli_fetch_array($qsql))
 {

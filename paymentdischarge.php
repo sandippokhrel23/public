@@ -20,7 +20,7 @@ if(isset($_POST["submitfullamount"]))
 		
 		echo "<script>window.location='patientreport.php?patientid=$_GET[patientid]&appointmentid=$_GET[appointmentid]'</script>";
 }
-if(isset($_SESSION[patientid]))
+if(isset($_SESSION['patientid']))
 {
 	$sql="SELECT * FROM payment WHERE paymentid='$_GET[editid]' ";
 	$qsql = mysqli_query($con,$sql);

@@ -128,9 +128,10 @@ if(isset($_GET[editid]))
           <td><input type="time" name="time" id="time" value="<?php echo $rsedit[appointmenttime]; ?>" /></td>
         </tr>
         <?php
-		if(isset($_SESSION[doctorid]))
+		if(isset($_SESSION['doctorid']))
 		{
-			echo "<input type='hidden' name='select6' value='$_SESSION[doctorid]' >";
+			$doctor_id=$_SESSION['doctorid'];
+			echo "<input type='hidden' name='select6' value='$doctor_id' >";
 		}
 		else
 		{

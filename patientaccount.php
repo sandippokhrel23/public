@@ -1,17 +1,17 @@
 <?php
 session_start();
 include("dbconnection.php");
-if(!isset($_SESSION[patientid]))
+if(!isset($_SESSION['patientid']))
 {
 	echo "<script>window.location='patientlogin.php';</script>";
 }
 include("header.php");
-
-$sqlpatient = "SELECT * FROM patient WHERE patientid='$_SESSION[patientid]' ";
+$patient_id=$_SESSION['patientid'];
+$sqlpatient = "SELECT * FROM patient WHERE patientid='$patient_id' ";
 $qsqlpatient = mysqli_query($con,$sqlpatient);
 $rspatient = mysqli_fetch_array($qsqlpatient);
 
-$sqlpatientappointment = "SELECT * FROM appointment WHERE patientid='$_SESSION[patientid]' ";
+$sqlpatientappointment = "SELECT * FROM appointment WHERE patientid='$patient_id' ";
 $qsqlpatientappointment = mysqli_query($con,$sqlpatientappointment);
 $rspatientappointment = mysqli_fetch_array($qsqlpatientappointment);
 ?>

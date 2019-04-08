@@ -4,9 +4,10 @@ include("header.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
 {
-	if(isset($_SESSION[adminid]))
+	if(isset($_SESSION['adminid']))
 	{
-			$sql ="UPDATE admin SET adminname='$_POST[adminname]',loginid='$_POST[loginid]',status='$_POST[select]' WHERE adminid='$_SESSION[adminid]'";
+		$admin_id=$_SESSION['adminid'];
+			$sql ="UPDATE admin SET adminname='$_POST[adminname]',loginid='$_POST[loginid]',status='$_POST[select]' WHERE adminid='$admin_id'";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			echo "<script>alert('admin record updated successfully...');</script>";
@@ -29,9 +30,10 @@ if(isset($_POST[submit]))
 	}
 }
 }
-if(isset($_SESSION[adminid]))
+if(isset($_SESSION['adminid']))
 {
-	$sql="SELECT * FROM admin WHERE adminid='$_SESSION[adminid]' ";
+	$admin_id=$_SESSION['adminid'];
+	$sql="SELECT * FROM admin WHERE adminid='$admin_id' ";
 	$qsql = mysqli_query($con,$sql);
 	$rsedit = mysqli_fetch_array($qsql);
 	

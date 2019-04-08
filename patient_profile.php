@@ -4,7 +4,6 @@ include('config.php');
 session_start();
 		$pid	=$_SESSION['user_id']; 
 		$sql	="select * from patient_detail where login_id='$pid'";
-	
 		$row 	= $conn->query($sql);
 		$pdtl 	= mysqli_fetch_array($row);	
 		

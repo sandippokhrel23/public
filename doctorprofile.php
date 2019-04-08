@@ -4,9 +4,10 @@ include("header.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
 {
-	if(isset($_SESSION[doctorid]))
+	if(isset($_SESSION['doctorid']))
 	{
-			$sql ="UPDATE doctor SET doctorname='$_POST[doctorname]',mobileno='$_POST[mobilenumber]',departmentid='$_POST[select3]',loginid='$_POST[loginid]',education='$_POST[education]',experience='$_POST[experience]',consultancy_charge='$_POST[consultancy_charge]' WHERE doctorid='$_SESSION[doctorid]'";
+		$doctor_id=$_SESSION['doctorid'];
+			$sql ="UPDATE doctor SET doctorname='$_POST[doctorname]',mobileno='$_POST[mobilenumber]',departmentid='$_POST[select3]',loginid='$_POST[loginid]',education='$_POST[education]',experience='$_POST[experience]',consultancy_charge='$_POST[consultancy_charge]' WHERE doctorid='$doctor_id'";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			echo "<script>alert('Doctor profile updated successfully...');</script>";
@@ -29,9 +30,10 @@ if(isset($_POST[submit]))
 	}
 }
 }
-if(isset($_SESSION[doctorid]))
+if(isset($_SESSION['doctorid']))
 {
-	$sql="SELECT * FROM doctor WHERE doctorid='$_SESSION[doctorid]' ";
+	$doctor_id=$_SESSION['doctorid'];
+	$sql="SELECT * FROM doctor WHERE doctorid='$doctor_id' ";
 	$qsql = mysqli_query($con,$sql);
 	$rsedit = mysqli_fetch_array($qsql);
 	
