@@ -15,10 +15,10 @@ include("header.php");
 <div class="wrapper col4">
   <div id="container">
     <div id="content">
-      <h1>About SDM Hospital</h1>
-      <p align="justify">Shri Kshetra Dharmasthala has immensely contributed to the spiritual, economic and social development of Karnataka.  It is imparting education to thousands of students all over Karnataka through its “SDM Educational Society” wing. SDM College of Medical sciences & Hospital in Dharwad, apart from providing quality medical education, is creating a revolution in health care scenario of Northern Karnataka.  It is a brain child of Dr. D. Veerendra Heggade, Rev. President of SDM Educational Society.  Way back in year 2001, a group of people from Dharwad approached Dr. Heggade and requested him to start a Hospital.  Dr. Heggade, understanding the health care needs of this part of Karnataka decided to start a Hospital with a Medical College attached to it.  On March 3rd, 2002, Mr. S. M. Krishna, the then Chief Minister laid the foundation stone for the Hospital building..</p>
-      <p align="justify">SDM Hospital is located on the highway connecting Hubli and Dharwad.  It is spread over 65 acres of land, in a serene atmosphere. This campus, apart from Medical College and Hospital, houses Nursing Institute, Physiotherapy College, Students Hostels, Staff Quarters and abodes for patient’s relatives.</p>
-      <p align="justify">“Royal treatment for common man” has been the mission statement of SDM Hospital. Every person who has taken treatment in this Hospital would certainly feel this.  The clean environment and humble services of staff have been making plenty of people recover their health every day. Hospital is also fostering quality research in medical field.  Regular workshops and conferences are being conducted to enhance the knowledge of doctors working within the Hospital and also those within twin cities. For the community, Hospital conducts regular free health camps, family planning camps, cataract camps, spirometry camps etc.  Within very short span since its inception, under the able leadership of Dr. Niranjan Kumar, Medical Director, this Hospital has made a prominent name in the medical map of India. </p>
+      <h1>About Our Hospital</h1>
+      <p align="justify">When it comes to choosing a hospital, one thing is clear: quality counts. With more than two decades of tradition, excellence and quality in providing medical care in a comfortable and convenient environment, we bring peace of mind for the thousands of patients we care about every day with the help of our doctors, specialists and nurses.
+</p>
+      
       <div class="homecontent">
         <ul>
           <li>
@@ -33,7 +33,7 @@ include("header.php");
         <div class="clear"></div>
       </div>
       <p><strong>Directors message:</strong><br />
-      Keeping in with the prime objective of the SDME Society of providing value based education and social service, the SDM College of Medical Sciences &amp; Hospital, Dharwad was established in the year 2003 to address the ever growing demand by the society for quality health care professionals delivering quality health care through quality infrastructure at an affordable cost to alleviate human suffering through healing hands.</p>
+      Hospital is committed to provide excellent healthcare services by effective and professional way to meet with patient , community needs and expectations.</p>
     </div>
     <div id="column">
       <div id="featured">

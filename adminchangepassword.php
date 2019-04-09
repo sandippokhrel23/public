@@ -4,7 +4,8 @@ include("header.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
 {
-	$sql = "UPDATE admin SET password='$_POST[newpassword]' WHERE password='$_POST[oldpassword]' AND adminid='$_SESSION['adminid']'";
+	$admin_id=$_SESSION['adminid'];
+	$sql = "UPDATE admin SET password='$_POST[newpassword]' WHERE password='$_POST[oldpassword]' AND adminid='$admin_id'";
 	$qsql= mysqli_query($con,$sql);
 	if(mysqli_affected_rows($con) == 1)
 	{

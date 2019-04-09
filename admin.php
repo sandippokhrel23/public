@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("header.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
@@ -17,7 +18,7 @@ if(isset($_POST[submit]))
 	}
 	else
 	{
-	$sql ="INSERT INTO admin(adminname,loginid,password,status) values('$_POST[adminname]','$_POST[loginid]','$_POST[password]','$_POST[select]')";
+	$sql ="INSERT INTO admin(adminname,loginid,password,status,usertype) values('$_POST[adminname]','$_POST[loginid]','$_POST[password]','$_POST[select]','Admin')";
 	if($qsql = mysqli_query($con,$sql))
 	{
 		echo "<script>alert('Administrator record inserted successfully...');</script>";

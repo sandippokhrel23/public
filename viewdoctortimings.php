@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("header.php");
 include("dbconnection.php");
 if(isset($_GET[delid]))
@@ -31,7 +32,8 @@ if(isset($_GET[delid]))
           <td>Action</td>
         </tr>
           <?php
-		$sql ="SELECT * FROM doctor_timings where doctorid='$_SESSION['doctorid']'";
+          $doctor_id=$_SESSION['doctorid'];
+		$sql ="SELECT * FROM doctor_timings where doctorid='$doctor_id'";
 		$qsql = mysqli_query($con,$sql);
 		while($rs = mysqli_fetch_array($qsql))
 		{

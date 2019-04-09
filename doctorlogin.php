@@ -1,5 +1,7 @@
 <?php
 session_start();
+// session_destroy();
+
 include("header.php");
 include("dbconnection.php");
 if(isset($_SESSION['doctorid']))
@@ -58,6 +60,7 @@ if(isset($_POST[submit]))
 include("footer.php");
 ?>
 <script type="application/javascript">
+
 var alphaExp = /^[a-zA-Z]+$/; //Variable to validate only alphabets
 var alphaspaceExp = /^[a-zA-Z\s]+$/; //Variable to validate only alphabets and space
 var numericExpression = /^[0-9]+$/; //Variable to validate only numbers
@@ -91,5 +94,9 @@ function validateform()
 		return false;
 	}
 	
+}
+var elementExists = document.getElementById("mmenu");
+if(elementExists){
+	location.reload();
 }
 </script>

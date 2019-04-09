@@ -7,7 +7,7 @@ if(isset($_POST[submit]))
 				<strong>Message :-</strong> $_POST[comment]
 				";
 	
-	sendmail("yashikachinz1997@gmail.com","Mail from Appoint My Doctor",$message);
+	sendmail("pokhrelsandip23@gmail.com","Mail from Appoint My Doctor",$message);
 	
 }
 ?>
@@ -22,11 +22,11 @@ if(isset($_POST[submit]))
   <div id="container">
     <h6>Our Address</h6>
     <p>
-Online Hospital Management System , Bangalore<br />
+Patient Care Application, Nepal<br />
 
-<strong>tel</strong>:080 65110488<br />
+<strong>tel</strong>:01 123456<br />
 
-<strong>Email ID</strong>: ohms@gmail.com</p>
+<strong>Email ID</strong>: Pokhrelsandip23@gmail.com</p>
 
         <h6>Contact Us by entering following information</h6>
             <form action="" method="post">

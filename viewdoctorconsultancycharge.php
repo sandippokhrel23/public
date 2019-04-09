@@ -33,7 +33,8 @@ if(isset($_GET[delid]))
         </thead>
         <tbody>
          <?php
-		$sql ="SELECT * FROM billing_records where bill_type='Consultancy Charge' AND bill_type_id='$_SESSION['doctorid']'";
+				 $doctor_id=$_SESSION['doctorid'];
+		$sql ="SELECT * FROM billing_records where bill_type='Consultancy Charge' AND bill_type_id='$doctor_id'";
 		$qsql = mysqli_query($con,$sql);
 		$billamt= 0;
 		while($rs = mysqli_fetch_array($qsql))

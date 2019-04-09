@@ -29,12 +29,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `adminid` int(10) NOT NULL,
-  `adminname` varchar(25) NOT NULL,
-  `loginid` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `usertype` varchar(30) NOT NULL
+  `adminid` int(10) NULL,
+  `adminname` varchar(25) NULL,
+  `loginid` varchar(25) NULL,
+  `password` varchar(25) NULL,
+  `status` varchar(10) NULL,
+  `usertype` varchar(30) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -57,16 +57,16 @@ INSERT INTO `admin` (`adminid`, `adminname`, `loginid`, `password`, `status`, `u
 --
 
 CREATE TABLE `appointment` (
-  `appointmentid` int(10) NOT NULL,
-  `appointmenttype` varchar(25) NOT NULL,
-  `patientid` int(10) NOT NULL,
+  `appointmentid` int(10) NULL,
+  `appointmenttype` varchar(25) NULL,
+  `patientid` int(10) NULL,
   `roomid` int(10) NULL,
-  `departmentid` int(10) NOT NULL,
-  `appointmentdate` date NOT NULL,
-  `appointmenttime` time NOT NULL,
-  `doctorid` int(10) NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `app_reason` text NOT NULL
+  `departmentid` int(10) NULL,
+  `appointmentdate` date NULL,
+  `appointmenttime` time NULL,
+  `doctorid` int(10) NULL,
+  `status` varchar(10) NULL,
+  `app_reason` text NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -148,16 +148,16 @@ INSERT INTO `appointment` (`appointmentid`, `appointmenttype`, `patientid`, `roo
 --
 
 CREATE TABLE `billing` (
-  `billingid` int(10) NOT NULL,
-  `patientid` int(10) NOT NULL,
-  `appointmentid` int(10) NOT NULL,
-  `billingdate` date NOT NULL,
-  `billingtime` time NOT NULL,
-  `discount` float(10,2) NOT NULL,
-  `taxamount` float(10,2) NOT NULL,
-  `discountreason` text NOT NULL,
-  `discharge_time` time NOT NULL,
-  `discharge_date` date NOT NULL
+  `billingid` int(10) NULL,
+  `patientid` int(10) NULL,
+  `appointmentid` int(10) NULL,
+  `billingdate` date NULL,
+  `billingtime` time NULL,
+  `discount` float(10,2) NULL,
+  `taxamount` float(10,2) NULL,
+  `discountreason` text NULL,
+  `discharge_time` time NULL,
+  `discharge_date` date NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -207,13 +207,13 @@ INSERT INTO `billing` (`billingid`, `patientid`, `appointmentid`, `billingdate`,
 --
 
 CREATE TABLE `billing_records` (
-  `billingservice_id` int(10) NOT NULL,
-  `billingid` int(10) NOT NULL,
-  `bill_type_id` int(10) NOT NULL COMMENT 'id of service charge or treatment charge',
-  `bill_type` varchar(250) NOT NULL,
-  `bill_amount` float(10,2) NOT NULL,
-  `bill_date` date NOT NULL,
-  `status` varchar(10) NOT NULL
+  `billingservice_id` int(10) NULL,
+  `billingid` int(10) NULL,
+  `bill_type_id` int(10) NULL COMMENT 'id of service charge or treatment charge',
+  `bill_type` varchar(250) NULL,
+  `bill_amount` float(10,2) NULL,
+  `bill_date` date NULL,
+  `status` varchar(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -432,10 +432,10 @@ INSERT INTO `billing_records` (`billingservice_id`, `billingid`, `bill_type_id`,
 --
 
 CREATE TABLE `department` (
-  `departmentid` int(10) NOT NULL,
-  `departmentname` varchar(100) NOT NULL,
-  `description` text NOT NULL,
-  `status` varchar(10) NOT NULL
+  `departmentid` int(10) NULL,
+  `departmentname` varchar(100) NULL,
+  `description` text NULL,
+  `status` varchar(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -467,16 +467,16 @@ INSERT INTO `department` (`departmentid`, `departmentname`, `description`, `stat
 --
 
 CREATE TABLE `doctor` (
-  `doctorid` int(10) NOT NULL,
-  `doctorname` varchar(50) NOT NULL,
-  `mobileno` varchar(15) NOT NULL,
-  `departmentid` int(10) NOT NULL,
-  `loginid` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `education` varchar(25) NOT NULL,
-  `experience` float(11,1) NOT NULL,
-  `consultancy_charge` float(10,2) NOT NULL
+  `doctorid` int(10) NULL,
+  `doctorname` varchar(50) NULL,
+  `mobileno` varchar(15) NULL,
+  `departmentid` int(10) NULL,
+  `loginid` varchar(25) NULL,
+  `password` varchar(25) NULL,
+  `status` varchar(10) NULL,
+  `education` varchar(25) NULL,
+  `experience` float(11,1) NULL,
+  `consultancy_charge` float(10,2) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -506,12 +506,12 @@ INSERT INTO `doctor` (`doctorid`, `doctorname`, `mobileno`, `departmentid`, `log
 --
 
 CREATE TABLE `doctor_timings` (
-  `doctor_timings_id` int(10) NOT NULL,
-  `doctorid` int(10) NOT NULL,
-  `start_time` time NOT NULL,
-  `end_time` time NOT NULL,
-  `available_day` varchar(15) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `doctor_timings_id` int(10) NULL,
+  `doctorid` int(10) NULL,
+  `start_time` time NULL,
+  `end_time` time NULL,
+  `available_day` varchar(15) NULL,
+  `status` varchar(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -542,11 +542,11 @@ INSERT INTO `doctor_timings` (`doctor_timings_id`, `doctorid`, `start_time`, `en
 --
 
 CREATE TABLE `medicine` (
-  `medicineid` int(10) NOT NULL,
-  `medicinename` varchar(25) NOT NULL,
-  `medicinecost` float(10,2) NOT NULL,
-  `description` text NOT NULL,
-  `status` varchar(10) NOT NULL
+  `medicineid` int(10) NULL,
+  `medicinename` varchar(25) NULL,
+  `medicinecost` float(10,2) NULL,
+  `description` text NULL,
+  `status` varchar(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -567,21 +567,21 @@ INSERT INTO `medicine` (`medicineid`, `medicinename`, `medicinecost`, `descripti
 --
 
 CREATE TABLE `orders` (
-  `orderid` int(10) NOT NULL,
-  `patientid` int(10) NOT NULL,
-  `doctorid` int(10) NOT NULL,
-  `prescriptionid` int(10) NOT NULL,
-  `orderdate` date NOT NULL,
-  `deliverydate` date NOT NULL,
-  `address` text NOT NULL,
-  `mobileno` varchar(15) NOT NULL,
-  `note` text NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `payment_type` varchar(20) NOT NULL,
-  `card_no` varchar(20) NOT NULL,
-  `cvv_no` varchar(5) NOT NULL,
-  `expdate` date NOT NULL,
-  `card_holder` varchar(50) NOT NULL
+  `orderid` int(10) NULL,
+  `patientid` int(10) NULL,
+  `doctorid` int(10) NULL,
+  `prescriptionid` int(10) NULL,
+  `orderdate` date NULL,
+  `deliverydate` date NULL,
+  `address` text NULL,
+  `mobileno` varchar(15) NULL,
+  `note` text NULL,
+  `status` varchar(10) NULL,
+  `payment_type` varchar(20) NULL,
+  `card_no` varchar(20) NULL,
+  `cvv_no` varchar(5) NULL,
+  `expdate` date NULL,
+  `card_holder` varchar(50) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -635,20 +635,20 @@ INSERT INTO `orders` (`orderid`, `patientid`, `doctorid`, `prescriptionid`, `ord
 --
 
 CREATE TABLE `patient` (
-  `patientid` int(10) NOT NULL,
-  `patientname` varchar(50) NOT NULL,
-  `admissiondate` date NOT NULL,
-  `admissiontime` time NOT NULL,
-  `address` varchar(250) NOT NULL,
-  `mobileno` varchar(15) NOT NULL,
-  `city` varchar(25) NOT NULL,
-  `pincode` varchar(20) NOT NULL,
-  `loginid` varchar(50) NOT NULL,
-  `password` varchar(25) NOT NULL,
-  `bloodgroup` varchar(20) NOT NULL,
-  `gender` varchar(10) NOT NULL,
-  `dob` date NOT NULL,
-  `status` varchar(10) NOT NULL
+  `patientid` int(10) NULL,
+  `patientname` varchar(50) NULL,
+  `admissiondate` date NULL,
+  `admissiontime` time NULL,
+  `address` varchar(250) NULL,
+  `mobileno` varchar(15) NULL,
+  `city` varchar(25) NULL,
+  `pincode` varchar(20) NULL,
+  `loginid` varchar(50) NULL,
+  `password` varchar(25) NULL,
+  `bloodgroup` varchar(20) NULL,
+  `gender` varchar(10) NULL,
+  `dob` date NULL,
+  `status` varchar(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -686,17 +686,17 @@ INSERT INTO `patient` (`patientid`, `patientname`, `admissiondate`, `admissionti
 --
 
 CREATE TABLE `payment` (
-  `paymentid` int(10) NOT NULL,
-  `patientid` int(10) NOT NULL,
-  `appointmentid` int(10) NOT NULL,
-  `paiddate` date NOT NULL,
-  `paidtime` time NOT NULL,
-  `paidamount` float(10,2) NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `cardholder` varchar(50) NOT NULL,
-  `cardnumber` int(25) NOT NULL,
-  `cvvno` int(5) NOT NULL,
-  `expdate` date NOT NULL
+  `paymentid` int(10) NULL,
+  `patientid` int(10) NULL,
+  `appointmentid` int(10) NULL,
+  `paiddate` date NULL,
+  `paidtime` time NULL,
+  `paidamount` float(10,2) NULL,
+  `status` varchar(10) NULL,
+  `cardholder` varchar(50) NULL,
+  `cardnumber` int(25) NULL,
+  `cvvno` int(5) NULL,
+  `expdate` date NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -757,15 +757,15 @@ INSERT INTO `payment` (`paymentid`, `patientid`, `appointmentid`, `paiddate`, `p
 --
 
 CREATE TABLE `prescription` (
-  `prescriptionid` int(10) NOT NULL,
-  `treatment_records_id` int(10) NOT NULL,
-  `doctorid` int(10) NOT NULL,
-  `patientid` int(10) NOT NULL,
-  `delivery_type` varchar(10) NOT NULL COMMENT 'Delivered through appointment or online order',
-  `delivery_id` int(10) NOT NULL COMMENT 'appointmentid or orderid',
-  `prescriptiondate` date NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `appointmentid` int(10) NOT NULL
+  `prescriptionid` int(10) NULL,
+  `treatment_records_id` int(10) NULL,
+  `doctorid` int(10) NULL,
+  `patientid` int(10) NULL,
+  `delivery_type` varchar(10) NULL COMMENT 'Delivered through appointment or online order',
+  `delivery_id` int(10) NULL COMMENT 'appointmentid or orderid',
+  `prescriptiondate` date NULL,
+  `status` varchar(10) NULL,
+  `appointmentid` int(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -864,13 +864,13 @@ INSERT INTO `prescription` (`prescriptionid`, `treatment_records_id`, `doctorid`
 --
 
 CREATE TABLE `prescription_records` (
-  `prescription_record_id` int(10) NOT NULL,
-  `prescription_id` int(10) NOT NULL,
-  `medicine_name` varchar(25) NOT NULL,
-  `cost` float(10,2) NOT NULL,
-  `unit` int(10) NOT NULL,
-  `dosage` varchar(25) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `prescription_record_id` int(10) NULL,
+  `prescription_id` int(10) NULL,
+  `medicine_name` varchar(25) NULL,
+  `cost` float(10,2) NULL,
+  `unit` int(10) NULL,
+  `dosage` varchar(25) NULL,
+  `status` varchar(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1002,12 +1002,12 @@ INSERT INTO `prescription_records` (`prescription_record_id`, `prescription_id`,
 --
 
 CREATE TABLE `room` (
-  `roomid` int(10) NOT NULL,
-  `roomtype` varchar(25) NOT NULL,
-  `roomno` int(10) NOT NULL,
-  `noofbeds` int(10) NOT NULL,
-  `room_tariff` float(10,2) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `roomid` int(10) NULL,
+  `roomtype` varchar(25) NULL,
+  `roomno` int(10) NULL,
+  `noofbeds` int(10) NULL,
+  `room_tariff` float(10,2) NULL,
+  `status` varchar(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1028,11 +1028,11 @@ INSERT INTO `room` (`roomid`, `roomtype`, `roomno`, `noofbeds`, `room_tariff`, `
 --
 
 CREATE TABLE `service_type` (
-  `service_type_id` int(10) NOT NULL,
-  `service_type` varchar(100) NOT NULL,
-  `servicecharge` float(10,2) NOT NULL,
-  `description` text NOT NULL,
-  `status` varchar(10) NOT NULL
+  `service_type_id` int(10) NULL,
+  `service_type` varchar(100) NULL,
+  `servicecharge` float(10,2) NULL,
+  `description` text NULL,
+  `status` varchar(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1053,11 +1053,11 @@ INSERT INTO `service_type` (`service_type_id`, `service_type`, `servicecharge`, 
 --
 
 CREATE TABLE `treatment` (
-  `treatmentid` int(10) NOT NULL,
-  `treatmenttype` varchar(25) NOT NULL,
-  `treatment_cost` decimal(10,2) NOT NULL,
-  `note` text NOT NULL,
-  `status` varchar(10) NOT NULL
+  `treatmentid` int(10) NULL,
+  `treatmenttype` varchar(25) NULL,
+  `treatment_cost` decimal(10,2) NULL,
+  `note` text NULL,
+  `status` varchar(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1080,16 +1080,16 @@ INSERT INTO `treatment` (`treatmentid`, `treatmenttype`, `treatment_cost`, `note
 --
 
 CREATE TABLE `treatment_records` (
-  `treatment_records_id` int(10) NOT NULL,
-  `treatmentid` int(10) NOT NULL,
-  `appointmentid` int(10) NOT NULL,
-  `patientid` int(10) NOT NULL,
-  `doctorid` int(10) NOT NULL,
-  `treatment_description` text NOT NULL,
-  `uploads` varchar(100) NOT NULL,
-  `treatment_date` date NOT NULL,
-  `treatment_time` time NOT NULL,
-  `status` varchar(10) NOT NULL
+  `treatment_records_id` int(10) NULL,
+  `treatmentid` int(10) NULL,
+  `appointmentid` int(10) NULL,
+  `patientid` int(10) NULL,
+  `doctorid` int(10) NULL,
+  `treatment_description` text NULL,
+  `uploads` varchar(100) NULL,
+  `treatment_date` date NULL,
+  `treatment_time` time NULL,
+  `status` varchar(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1154,13 +1154,20 @@ INSERT INTO `treatment_records` (`treatment_records_id`, `treatmentid`, `appoint
 --
 
 CREATE TABLE `user` (
-  `userid` int(11) NOT NULL,
-  `loginname` varchar(50) NOT NULL,
-  `password` varchar(10) NOT NULL,
-  `patientname` varchar(50) NOT NULL,
-  `mobileno` varchar(15) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `createddateandtime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `userid` int(11) NULL,
+  `loginname` varchar(50) NULL,
+  `password` varchar(10) NULL,
+  `patientname` varchar(50) NULL,
+  `mobileno` varchar(15) NULL,
+  `email` varchar(50) NULL,
+  `createddateandtime` datetime NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `notification` (
+  `userid` int(11) NULL,
+  `message` varchar(50) NULL,
+  `is_read` boolean DEFAULT 0,
+  `date` varchar(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1292,111 +1299,114 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `adminid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `adminid` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointmentid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `appointmentid` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `billing`
 --
 ALTER TABLE `billing`
-  MODIFY `billingid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `billingid` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `billing_records`
 --
 ALTER TABLE `billing_records`
-  MODIFY `billingservice_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
+  MODIFY `billingservice_id` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 
 --
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `departmentid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `departmentid` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `doctorid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `doctorid` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `doctor_timings`
 --
 ALTER TABLE `doctor_timings`
-  MODIFY `doctor_timings_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `doctor_timings_id` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `medicine`
 --
 ALTER TABLE `medicine`
-  MODIFY `medicineid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `medicineid` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `orderid` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `patientid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `patientid` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `paymentid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `paymentid` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `prescription`
 --
 ALTER TABLE `prescription`
-  MODIFY `prescriptionid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `prescriptionid` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `prescription_records`
 --
 ALTER TABLE `prescription_records`
-  MODIFY `prescription_record_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `prescription_record_id` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 
 --
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `roomid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `roomid` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `service_type`
 --
 ALTER TABLE `service_type`
-  MODIFY `service_type_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `service_type_id` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `treatment`
 --
 ALTER TABLE `treatment`
-  MODIFY `treatmentid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `treatmentid` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `treatment_records`
 --
 ALTER TABLE `treatment_records`
-  MODIFY `treatment_records_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `treatment_records_id` int(10) NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userid` int(11) NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+applicationnotificationnotificationapplication

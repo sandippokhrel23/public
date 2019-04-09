@@ -1,5 +1,6 @@
 <?php
 session_start();
+// session_destroy();
 include("header.php");
 include("dbconnection.php");
 if(isset($_SESSION['adminid']))
@@ -95,5 +96,10 @@ function validateform()
 	{
 		return true;
 	}
+}
+
+var elementExists = document.getElementById("mmenu");
+if(elementExists){
+	location.reload();
 }
 </script>

@@ -1,5 +1,15 @@
 <?php
 session_start();
+if(isset($_SESSION['patientid'])){
+    $notification_count=0;
+    $p_id=$_SESSION['patientid'];
+    $sql ="SELECT * FROM notification where is_read=0 and userid=$p_id";
+$qsql = mysqli_query($con,$sql);
+while($rs = mysqli_fetch_array($qsql))
+    {
+        $notification_count++;
+    }
+}
 ?>
 <style>
 #mmenu, #mmenu ul {
@@ -169,6 +179,15 @@ border-bottom-color: transparent;
 border-radius: 0 0 3px 3px;
 }
 </style>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <?php
 if(isset($_SESSION['adminid']))
 {
@@ -314,7 +333,11 @@ if(isset($_SESSION['patientid']))
 
 
 <li><a href="logout.php">Log Out</a></li>
+<li><a href="notification.php" style="width: 0px;">
+<img src="/images/notify_icon.png" style="height: 21px;width: 29px;"/></a>
+<span class="badge badge-pill badge-danger" style="background-color: red;"><?php echo $notification_count?></span></li>
 </div>
 <?php
 }
+
 ?>

@@ -1,6 +1,5 @@
 <?php
 session_start();
-echo $_SESSION['doctorid'];
 if(!isset($_SESSION['doctorid']))
 {
 	echo "<script>window.location='doctorlogin.php';</script>";

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("header.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
@@ -125,6 +126,29 @@ if(isset($_GET[editid]))
 				else
 				{
 					echo "<option value='$rsdoctor[doctorid]'>$rsdoctor[doctorname] ( $rsdoctor[departmentname] )</option>";				
+				}
+			}
+		  ?>
+          </select></td>
+        </tr>
+
+				
+        <tr>
+          <td>Room</td>
+          <td><select name="select3" id="select3">
+            <option value="">Select</option>
+            <?php
+          	$sqlroom= "SELECT * FROM room ";
+			$qsqlroom = mysqli_query($con,$sqlroom);
+			while($rsroom = mysqli_fetch_array($qsqlroom))
+			{
+				if($rsroom[roomid] == $rsedit[roomid])
+				{
+					echo "<option value='$rsroom[roomid]' selected>$rsroom[roomtype] </option>";
+				}
+				else
+				{
+					echo "<option value='$rsroom[roomid]'>$rsroom[roomtype] </option>";				
 				}
 			}
 		  ?>

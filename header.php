@@ -164,11 +164,15 @@ input[type=number]{
 }
 </style>
 </head>
+<?php session_start();?>
 <body id="top">
 <div class="wrapper col1">
 <center><a href="index.php"><img src=""></a></center>
   <div id="head">
-    
+  <?php
+if(!isset($_SESSION['patientid']) && !isset($_SESSION['adminid']) && !isset($_SESSION['doctorid']))
+{
+?>      
     <div id="topnav">
       <ul>
         <li><a  href="index.php" <?php if(basename($_SERVER['PHP_SELF']) == "index.php"){ echo ' class="active"'; } ?> >Home</a></li>
@@ -191,6 +195,9 @@ else
 ?>        
         <li class="last"><a href="contactus.php" <?php if(basename($_SERVER['PHP_SELF']) == "contactus.php"){ echo ' class="active"'; } ?>>Contact US</a></li></ul>
     </div>
+    <?php
+}
+?> 
    
   </div>
 </div>
